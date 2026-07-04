@@ -311,3 +311,24 @@ nav a:hover {
 .lightbox-overlay.activo .lightbox-imagen {
     transform: scale(1);
 }
+/* =======================================================
+   🌀 ICONOS FLOTANTES DE FONDO (ESTILO FRUTIGER METRO)
+   ======================================================= */
+
+.icono-flotante {
+    position: fixed;
+    pointer-events: none; /* Hace que los iconos sean "fantasmas", no bloquean los clicks del usuario */
+    z-index: -1;          /* Quedan detrás del contenido, pero encima de la rejilla base */
+    width: 60px;          /* Tamaño inicial estándar para tus iconos */
+    height: auto;
+    opacity: 0.25;        /* Transparencia sutil para que no saturen ni tapen los textos */
+    filter: drop-shadow(0px 0px 8px rgba(0, 255, 136, 0.2));
+    user-select: none;
+}
+
+/* Animación base para que no se sientan rígidos (un leve vaivén y rotación) */
+@keyframes flotadoSutil {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
