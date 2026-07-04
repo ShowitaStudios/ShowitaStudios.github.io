@@ -79,7 +79,7 @@ nav a:hover {
     text-align: center;
     padding: 0px 40px;
     background: rgba(255, 255, 255, 0.02);
-    border: 3px dashed #00ff48;
+    border: 6px inset #00ff48;
     border-radius: 24px;
     margin-bottom: 30px;
 }
@@ -94,7 +94,7 @@ nav a:hover {
 }
 
 .subtitulo-metro {
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: #a0a0c0;
     max-width: 60px0px;
     margin: 20px auto;
