@@ -543,18 +543,16 @@ nav a:hover {
     0% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.3); }
     100% { box-shadow: 0 0 40px rgba(255, 0, 85, 0.6); }
 }
-/* =======================================================
-   📱 RESPONSIVE DESIGN // AJUSTES PARA DISPOSITIVOS MÓVILES
-   ======================================================= */
+/*AJUSTES PARA DISPOSITIVOS CELU*/
 @media screen and (max-width: 768px) {
     
     /* 1. ESTRUCTURAS GLOBALES */
     body {
-        padding: 10px; /* Menos espacio en los bordes para ganar pantalla */
+        padding: 10px;
     }
     
     header {
-        flex-direction: column; /* Apila el logo y el botón de navegación verticalmente */
+        flex-direction: column;
         gap: 15px;
         text-align: center;
         padding: 15px 10px;
@@ -565,14 +563,13 @@ nav a:hover {
         margin-top: 20px;
     }
 
-    /* 2. OPTIMIZACIÓN DEL BLOG */
     .seccion-blog {
-        padding: 20px 15px; /* Reducimos el colchón interno de las tarjetas neón */
+        padding: 20px 15px;
         margin: 20px auto;
     }
 
     .titulo-blog {
-        font-size: 1.6rem; /* Texto un pelo más chico para que no se corte */
+        font-size: 1.6rem;
     }
 
     .texto-blog {
@@ -580,29 +577,26 @@ nav a:hover {
         line-height: 1.6;
     }
 
-    /* Reducción del mini-grid de Lore para que colapse a una sola columna si es necesario */
     .mini-grid-blog {
         grid-template-columns: 1fr; 
         gap: 20px;
     }
 
-    /* 3. OPTIMIZACIÓN DE LOS FUNKY KIDS (Giro 3D en móvil) */
     .grid-personajes-3d {
-        grid-template-columns: 1fr; /* Una tarjeta por fila para que se aprecie el arte */
+        grid-template-columns: 1fr;
         gap: 25px;
-        max-width: 320px; /* Centramos el ancho en pantallas delgadas */
+        max-width: 320px;
         margin: 25px auto 0 auto;
     }
 
     .tarjeta-3d-contenedor {
-        height: 380px; /* Le damos un poco más de aire vertical en móviles */
+        height: 380px;
     }
 
     .tarjeta-atras p {
-        font-size: 0.9rem; /* Ficha técnica legible en pantallas pequeñas */
+        font-size: 0.9rem;
     }
 
-    /* 4. ALERTA ROJA (POP-UP) EN MÓVIL */
     .popup-caja {
         width: 95%;
         margin: 10px;
@@ -617,8 +611,6 @@ nav a:hover {
         margin-bottom: 20px;
     }
 
-    /* 5. PORTAFOLIO PRINCIPAL (INDEX) - Si usabas grids o layouts anchos */
-    /* Aseguramos que las galerías o contenedores de tu index se apilen limpiamente */
     .contenedor-rueda-3d, 
     .galeria-index { 
         width: 100%;
