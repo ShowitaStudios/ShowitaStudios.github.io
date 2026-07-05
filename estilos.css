@@ -543,3 +543,78 @@ nav a:hover {
     0% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.3); }
     100% { box-shadow: 0 0 40px rgba(255, 0, 85, 0.6); }
 }
+/*AJUSTES PARA CELU*/
+@media screen and (max-width: 768px) {
+    
+    /* 1. ESTRUCTURAS GLOBALES */
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    .contenedor-principal {
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .seccion-blog {
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+
+    .titulo-blog {
+        font-size: 1.6rem;
+    }
+
+    .texto-blog {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .mini-grid-blog {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    .grid-personajes-3d {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 320px;
+        margin: 25px auto 0 auto;
+    }
+
+    .tarjeta-3d-contenedor {
+        height: 380px;
+    }
+
+    .tarjeta-atras p {
+        font-size: 0.9rem;
+    }
+
+    .popup-caja {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .popup-cuerpo h2 {
+        font-size: 1.4rem;
+    }
+
+    .popup-cuerpo p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .contenedor-rueda-3d, 
+    .galeria-index { 
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
