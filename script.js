@@ -2,7 +2,7 @@
 
 const botonGrind = document.getElementById('btnMusica');
 botonGrind.addEventListener('click', () => {
-    alert("Instalando troyano...");
+    alert("Iniciando banda_sonora.mp3...");
 });
 //SISTEMA DE CARRUSEL 3D EN PROFUNDIDAD
 const galeriaPersonajes = [
@@ -173,7 +173,7 @@ if (botonMusica) {
             musicaFondo.play()
                 .then(() => {
                     botonMusica.textContent = "Pausar el Funk";
-                    botonMusica.classList.add('musica-activa'); // Por si quieres darle estilos CSS luego
+                    botonMusica.classList.add('musica-activa');
                 })
                 .catch(error => {
                     console.log("El navegador bloqueó el audio momentáneamente:", error);
