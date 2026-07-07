@@ -543,7 +543,7 @@ nav a:hover {
     0% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.3); }
     100% { box-shadow: 0 0 40px rgba(255, 0, 85, 0.6); }
 }
-/*AJUSTES PARA DISPOSITIVOS CELU*/
+/*AJUSTES PARA CELU*/
 @media screen and (max-width: 768px) {
     
     /* 1. ESTRUCTURAS GLOBALES */
@@ -618,11 +618,7 @@ nav a:hover {
         overflow-x: hidden;
     }
 }
-/* =======================================================
-   🧪 APARTADO DE MODELOS 3D (LABORATORIO)
-   ======================================================= */
-
-/* Grid contenedor para las vitrinas 3D */
+/*MODELOS 3D*/
 .contenedor-laboratorio-3d {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -630,10 +626,9 @@ nav a:hover {
     margin-top: 30px;
 }
 
-/* Caja/Vitrina individual del modelo */
 .caja-modelo-3d {
-    background: rgba(5, 15, 10, 0.8); /* Fondo hacker verdoso ultra oscuro */
-    border: 1px dashed #00ff88; /* Borde discontinuo estilo blueprint */
+    background: rgba(5, 15, 10, 0.8);
+    border: 1px dashed #00ff88;
     border-radius: 6px;
     overflow: hidden;
     display: flex;
@@ -644,7 +639,6 @@ nav a:hover {
     width: 100%;
 }
 
-/* Efecto hover sutil al interactuar con la cabina */
 .caja-modelo-3d:hover {
     width: 100%;
     height: 546px;
@@ -653,7 +647,6 @@ nav a:hover {
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
 }
 
-/* Cabeceras y pies de la vitrina estilo terminal */
 .header-modelo, .footer-modelo {
     width: 100%;
     background: rgba(0, 255, 136, 0.1);
@@ -674,20 +667,163 @@ nav a:hover {
     color: #00aa66;
 }
 
-/* Ajuste forzado del renderizador */
 .caja-modelo-3d model-viewer {
     width: 100%;
-    height: 480px; /* Altura ideal para inspección */
+    height: 480px;
     background-color: transparent;
     outline: none;
     --poster-color: transparent;
 }
 
-/* Adaptación para pantallas móviles */
 @media screen and (max-width: 768px) {
     .contenedor-laboratorio-3d {
         grid-template-columns: 1fr;
         max-width: 340px;
         margin: 25px auto 0 auto;
+    }
+}
+/*BOTÓN GLITCH*/
+
+.contenedor-boton-portal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 50px auto;
+    box-sizing: border-box;
+}
+
+.btn-glitch-arcade {
+    position: relative;
+    display: inline-block;
+    padding: 22px 50px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    
+    font-family: inherit;
+    color: #00ff88; 
+    text-decoration: burlywood;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    background: transparent;
+    border: 6px solid #00ff88;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
+    cursor: pointer;
+    overflow: hidden;
+    animation: portal-idle-constante 1s infinite steps(1); 
+    animation: shake-fuerte 0.2s infinite linear;
+}
+
+.btn-glitch-arcade::before,
+.btn-glitch-arcade::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #050a06;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-glitch-arcade::before {
+    left: 4px;
+    text-shadow: -3px 0 #ff0055;
+    /* En idle ya tiene micro-cortes */
+    animation: glitch-animacion-1 2.5s infinite linear alternate-reverse;
+}
+
+.btn-glitch-arcade::after {
+    left: -4px;
+    text-shadow: -3px 0 #00ffff;
+    animation: glitch-animacion-2 2s infinite linear alternate-reverse;
+}
+
+.btn-glitch-arcade::before,
+.btn-glitch-arcade::after {
+    opacity: 0.25;
+    transition: opacity 0.1s ease;
+}
+
+.btn-glitch-arcade:hover {
+    color: #ffffff;
+    border-color: #ff0055;
+    box-shadow: 0 0 40px rgba(255, 0, 85, 0.8), inset 0 0 20px rgba(255, 0, 85, 0.4);
+    animation: shake-brutal 0.1s infinite linear;
+}
+
+.btn-glitch-arcade:hover::before,
+.btn-glitch-arcade:hover::after {
+    opacity: 1;
+}
+
+/*Animación de reposo*/
+@keyframes portal-idle-constante {
+    0%, 100% { 
+        border-color: #00ff88; 
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        color: #00ff88;
+    }
+    92% { 
+        border-color: #ff0055; 
+        box-shadow: 0 0 35px #00a2ff;
+        color: #ff0055;
+    }
+    94% { 
+        border-color: #b3ff00; 
+        box-shadow: 0 0 35px #00ff4c;
+        color: #b3ff00;
+    }
+    96% { 
+        border-color: rgba(0, 255, 136, 0.3); 
+        box-shadow: none;
+        color: rgba(0, 255, 136, 0.3);
+    }
+}
+
+/*Temblor al poner el cursor*/
+@keyframes shake-brutal {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-3px, 2px); }
+    40% { transform: translate(3px, -1px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 1px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch-animacion-1 {
+    0% { clip-path: inset(20% 0 70% 0); }
+    20% { clip-path: inset(80% 0 5% 0); }
+    40% { clip-path: inset(5% 0 85% 0); }
+    60% { clip-path: inset(45% 0 45% 0); }
+    80% { clip-path: inset(90% 0 2% 0); }
+    100% { clip-path: inset(10% 0 80% 0); }
+}
+
+@keyframes glitch-animacion-2 {
+    0% { clip-path: inset(75% 0 15% 0); }
+    20% { clip-path: inset(30% 0 60% 0); }
+    40% { clip-path: inset(65% 0 5% 0); }
+    60% { clip-path: inset(12% 0 75% 0); }
+    80% { clip-path: inset(50% 0 40% 0); }
+    100% { clip-path: inset(5% 0 90% 0); }
+}
+@keyframes shake-fuerte {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-1px, 0px); }
+    40% { transform: translate(.5%, -0px); }
+    60% { transform: translate(-.5px, -0px); }
+    80% { transform: translate(1px, 0px); }
+    100% { transform: translate(0, 0); }
+}
+
+@media screen and (max-width: 768px) {
+    .btn-glitch-arcade {
+        padding: 18px 30px;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
     }
 }
