@@ -16,6 +16,10 @@ const galeriaPersonajes = [
 const galeriaEscenarios = [
     'ConceptArt/1.png',
     'ConceptArt/2.png',
+    'Media/CasaRally1.png',
+    'Media/CasaRally2.png',
+    'Media/CasaRally3.png',
+    'Media/CasaRally4.png',
 ];
 
 //FUNCIÓN QUE CREA EL CARRUSEL
@@ -117,14 +121,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 //SISTEMA DE ICONOS ANIMADOS ALEATORIOS
 const misIconos = [
-    'Media/metro_51.png', 
-    'Media/metro_76.png', 
-    'Media/metro_62.png', 
-    'Media/metro_73.png',
-    'Media/metro_51.png', 
-    'Media/metro_76.png', 
-    'Media/metro_62.png', 
-    'Media/metro_73.png',
+     'Media/metro_52.png', 
+    'Media/metro_54.png', 
+    'Media/metro_52.png', 
+    'Media/metro_54.png',
+    'Media/metro_54.png', 
+    'Media/metro_52.png', 
+    'Media/metro_54.png', 
     'Media/metro_52.png', 
     'Media/metro_54.png', 
     'Media/metro_52.png', 

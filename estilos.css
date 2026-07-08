@@ -436,11 +436,11 @@ nav a:hover {
 }
 
 .indicador-giro {
-    font-size: 0.75rem;
+    font-size: 1rem;
     color: #9400d3;
     margin-top: 10px;
     letter-spacing: 1px;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .tarjeta-atras {
