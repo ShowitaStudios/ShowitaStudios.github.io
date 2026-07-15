@@ -24,7 +24,9 @@ body {
         linear-gradient(90deg, rgba(204, 0, 255, 0.242) 1px, transparent 1px);
     background-size: 60px 60px;
     z-index: -1;
+    
 }
+
 
 /*HEADER / MENÚ DE NAVEGACIÓN*/
 header {
@@ -825,5 +827,252 @@ nav a:hover {
         padding: 18px 30px;
         font-size: 1.1rem;
         letter-spacing: 3px;
+    }
+}
+/* =======================================================
+   🌀 VECTORES DE FONDO ESTILO Y2K
+   ======================================================= */
+
+/* Contenedor que bloquea el fondo pero deja hacer clic a todo lo demás */
+.decoraciones-y2k-contenedor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Se sitúa justo encima del fondo oscuro/grilla, pero detrás de todo tu contenido */
+    pointer-events: none; /* Evita que bloquee clics o selecciones de texto */
+    overflow: hidden;
+}
+
+/* Reglas comunes para los SVGs Y2K */
+.vector-y2k {
+    position: absolute;
+    color: #00ff88; /* Color neón base, puedes cambiarlo a #ff0055 si quieres contraste */
+    opacity: 0.07;  /* Ultra sutil para que parezca una marca de agua holográfica */
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Posicionamiento y comportamiento individual de cada elemento */
+
+/* Estrella Y2K Gigante en la esquina superior izquierda */
+.starburst-1 {
+    top: 10%;
+    left: -5%;
+    width: 350px;
+    height: 350px;
+    animation: pulsoY2K 6s infinite alternate ease-in-out;
+}
+
+/* Radar Técnico en la parte inferior derecha */
+.radar-y2k {
+    bottom: 10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    animation: rotarY2K 40s infinite linear; /* Giro ultra lento de radar */
+}
+
+/* Estrella Pequeña flotando por el centro superior */
+.starburst-2 {
+    top: 40%;
+    right: 15%;
+    width: 120px;
+    height: 120px;
+    opacity: 0.04;
+    animation: pulsoY2K 4s infinite alternate-reverse ease-in-out;
+}
+
+/* 🌀 ANIMACIONES Y2K */
+
+/* Rotación constante para el radar/retícula */
+@keyframes rotarY2K {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Pulso de tamaño sutil para las estrellas starburst */
+@keyframes pulsoY2K {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.05; }
+    100% { transform: scale(1.1) rotate(15deg); opacity: 0.08; }
+}
+
+/* Ocultar decoraciones complejas en pantallas muy pequeñas para no saturar el renderizado móvil */
+@media screen and (max-width: 768px) {
+    .radar-y2k {
+        width: 200px;
+        height: 200px;
+        bottom: 5%;
+    }
+    .starburst-1 {
+        width: 180px;
+        height: 180px;
+        top: 5%;
+    }
+    .starburst-2 {
+        display: none; /* Apagamos la pequeña para optimizar rendimiento */
+    }
+}
+.imagen-fondo-estatica {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    /* Forzamos a que ocupe todo el ancho y alto del viewport */
+    width: 100vw;
+    height: 100vh;
+    
+    /* 🚨 EL TRUCO: Hace que la imagen actúe como fondo, se recorte sola */
+    /* y se adapte de forma proporcional sin deformarse (estilo background-size: cover) */
+    object-fit: cover;
+    object-position: center; /* Mantiene el centro de la imagen siempre enfocado */
+    
+    /* Control de capas */
+    z-index: -2; 
+    
+    /* Estética */
+    opacity: 0.55;               
+    pointer-events: none;        
+    user-select: none;           
+}
+/* =======================================================
+   🥞 SISTEMA DE CAPAS DE FONDO MULTICAPA
+   ======================================================= */
+
+/* -------------------------------------------------------
+   Capa 1: NUEVA IMAGEN DE FONDO ABSOLUTO (Atrás de todo)
+   ------------------------------------------------------- */
+.fondo-absoluto-oscuro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    
+    /* Capa más baja del universo */
+    z-index: -3; 
+    
+    /* 🚨 FILTROS PARA OSCURECER */
+    filter: brightness(0.25); /* 0.25 oscurece al 75%.
+    opacity: 1; /* Al estar bien oscurecida, puede ir al 100% de opacidad sin molestar */
+    
+    pointer-events: none;
+    user-select: none;
+}
+/* =======================================================
+   🎮 PERSONAJE GUÍA Y SEÑALIZACIÓN (CON BOTÓN CENTRADO)
+   ======================================================= */
+
+/* Contenedor principal: ahora es relativo para que el personaje se ancle a él */
+.contenedor-portal-completo {
+    position: relative;
+    display: flex;
+    justify-content: center; /* El botón se mantendrá al centro absoluto */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    min-height: 200px; /* Le da espacio vertical para que no choque con otras secciones */
+}
+
+/* El contenedor del botón se mantiene limpio y centrado */
+.contenedor-boton-portal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Por encima de la decoración del personaje */
+}
+
+/* 🎯 EL TRUCO: El contenedor del personaje ahora flota de forma absoluta */
+.personaje-guia-contenedor {
+    position: absolute;
+    /* Se posiciona a la izquierda del botón sin empujarlo */
+    right: calc(50% + 300px); /* 50% es el centro; sumamos 240px para moverlo a la izquierda del botón gordo */
+    top: 80%;
+    transform: translateY(-50%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    
+    /* Animación de flotación suave combinada con el centrado */
+    animation: flotarPersonajeAbsoluto 3s infinite ease-in-out alternate;
+}
+
+/* La imagen PNG transparente de tu personaje */
+.personaje-apuntando {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.3));
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Bocadillo de diálogo estilo cómic/retro */
+.bocadillo-dialogo {
+    position: absolute;
+    top: -45px;
+    background: #d500f6;
+    color: #000000;
+    font-weight: 900;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 2px solid #000;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0px #000;
+    
+    animation: latidoDialogo 1s infinite alternate;
+}
+
+.bocadillo-dialogo::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #d500f6 transparent;
+    display: block;
+    width: 0;
+}
+
+/* 🌀 NUEVA ANIMACIÓN DE FLOTACIÓN (Mantiene el centrado vertical del translate) */
+@keyframes flotarPersonajeAbsoluto {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(-58%); } /* Hace el micro-desplazamiento vertical */
+}
+
+@keyframes latidoDialogo {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.05); filter: brightness(1.2); }
+}
+
+/* 📱 RESPONSIVO: En móviles los apilamos para que no se encimen */
+@media screen and (max-width: 900px) {
+    .contenedor-portal-completo {
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        min-height: auto;
+    }
+
+    /* En móviles vuelve a ser relativo para que se posicione arriba del botón de forma natural */
+    .personaje-guia-contenedor {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        animation: flotarPersonajeMovil 3s infinite ease-in-out alternate;
+    }
+
+    @keyframes flotarPersonajeMovil {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
     }
 }
