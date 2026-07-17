@@ -989,7 +989,7 @@ nav a:hover {
 .personaje-guia-contenedor {
     position: absolute;
     /* Se posiciona a la izquierda del botón sin empujarlo */
-    right: calc(50% + 500px); /* 50% es el centro; sumamos 240px para moverlo a la izquierda del botón gordo */
+    right: calc(50% + 300px); /* 50% es el centro; sumamos 240px para moverlo a la izquierda del botón gordo */
     top: 50%;
     transform: translateY(-50%);
     
@@ -1004,25 +1004,26 @@ nav a:hover {
 
 /* La imagen PNG transparente de tu personaje */
 .personaje-apuntando {
-    width: 160px;
+    width: 280px;
     height: auto;
     filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.3));
     user-select: none;
     pointer-events: none;
 }
-
 /* =======================================================
-   💬 GLOBO DE TEXTO (A LA ALTURA DEL BOTÓN)
+   💬 GLOBO DE TEXTO (POSICIONAMIENTO CONTROLADO)
    ======================================================= */
 
-/* El bocadillo ahora flota a la derecha del personaje, centrado con el botón */
 .bocadillo-dialogo {
     position: absolute;
-    top: 50%;            /* Altura exacta del centro vertical */
-    left: 100%;          /* Lo empuja hacia la derecha del personaje */
-    margin-left: 15px;   /* Separación para que no tape el arte del personaje */
+    top: 10%; /* Sigue perfectamente centrado a la altura del botón */
     
-    background: #cd00e3;
+    /* 🎛️ EL CONTROL MANUAL: */
+    /* Como el contenedor mide el ancho del personaje, con esto empujamos el */
+    /* globo hacia la derecha. Ajusta este número a tu gusto: */
+    left: 300px; 
+    
+    background: #ffff00;
     color: #000000;
     font-weight: 900;
     font-size: 0.85rem;
@@ -1033,21 +1034,20 @@ nav a:hover {
     letter-spacing: 1px;
     box-shadow: 4px 4px 0px #000;
     
-    /* Nueva animación que incluye el translateY para mantenerlo perfectamente centrado */
     animation: latidoDialogoCentro 1s infinite alternate;
     z-index: 10;
 }
 
-/* La colita del globo (ahora apunta hacia la izquierda, hacia el personaje) */
+/* La colita del globo apuntando a la izquierda */
 .bocadillo-dialogo::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: -12px; /* Lo saca hacia el lado izquierdo de la caja */
-    transform: translateY(-50%); /* Centra la colita verticalmente */
+    left: -12px;
+    transform: translateY(-50%);
     border-width: 8px 12px 8px 0;
     border-style: solid;
-    border-color: transparent #cd00e3 transparent transparent;
+    border-color: transparent #ffff00 transparent transparent;
     display: block;
     width: 0;
 }
