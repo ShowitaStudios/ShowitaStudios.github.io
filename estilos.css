@@ -989,8 +989,8 @@ nav a:hover {
 .personaje-guia-contenedor {
     position: absolute;
     /* Se posiciona a la izquierda del botón sin empujarlo */
-    right: calc(50% + 300px); /* 50% es el centro; sumamos 240px para moverlo a la izquierda del botón gordo */
-    top: 80%;
+    right: calc(50% + 500px); /* 50% es el centro; sumamos 240px para moverlo a la izquierda del botón gordo */
+    top: 50%;
     transform: translateY(-50%);
     
     display: flex;
@@ -1011,11 +1011,18 @@ nav a:hover {
     pointer-events: none;
 }
 
-/* Bocadillo de diálogo estilo cómic/retro */
+/* =======================================================
+   💬 GLOBO DE TEXTO (A LA ALTURA DEL BOTÓN)
+   ======================================================= */
+
+/* El bocadillo ahora flota a la derecha del personaje, centrado con el botón */
 .bocadillo-dialogo {
     position: absolute;
-    top: -45px;
-    background: #d500f6;
+    top: 50%;            /* Altura exacta del centro vertical */
+    left: 100%;          /* Lo empuja hacia la derecha del personaje */
+    margin-left: 15px;   /* Separación para que no tape el arte del personaje */
+    
+    background: #cd00e3;
     color: #000000;
     font-weight: 900;
     font-size: 0.85rem;
@@ -1026,53 +1033,51 @@ nav a:hover {
     letter-spacing: 1px;
     box-shadow: 4px 4px 0px #000;
     
-    animation: latidoDialogo 1s infinite alternate;
+    /* Nueva animación que incluye el translateY para mantenerlo perfectamente centrado */
+    animation: latidoDialogoCentro 1s infinite alternate;
+    z-index: 10;
 }
 
+/* La colita del globo (ahora apunta hacia la izquierda, hacia el personaje) */
 .bocadillo-dialogo::after {
     content: '';
     position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 10px 10px 0;
+    top: 50%;
+    left: -12px; /* Lo saca hacia el lado izquierdo de la caja */
+    transform: translateY(-50%); /* Centra la colita verticalmente */
+    border-width: 8px 12px 8px 0;
     border-style: solid;
-    border-color: #d500f6 transparent;
+    border-color: transparent #cd00e3 transparent transparent;
     display: block;
     width: 0;
 }
 
-/* 🌀 NUEVA ANIMACIÓN DE FLOTACIÓN (Mantiene el centrado vertical del translate) */
-@keyframes flotarPersonajeAbsoluto {
-    0% { transform: translateY(-50%); }
-    100% { transform: translateY(-58%); } /* Hace el micro-desplazamiento vertical */
+/* Animación corregida para mantener el globo en su eje Y */
+@keyframes latidoDialogoCentro {
+    0% { transform: translateY(-50%) scale(1); filter: brightness(1); }
+    100% { transform: translateY(-50%) scale(1.05); filter: brightness(1.2); }
 }
 
-@keyframes latidoDialogo {
-    0% { transform: scale(1); filter: brightness(1); }
-    100% { transform: scale(1.05); filter: brightness(1.2); }
-}
-
-/* 📱 RESPONSIVO: En móviles los apilamos para que no se encimen */
+/* 📱 RESPONSIVO: Si entran desde celular, el globo vuelve arriba de la cabeza apuntando abajo */
 @media screen and (max-width: 900px) {
-    .contenedor-portal-completo {
-        flex-direction: column;
-        justify-content: center;
-        gap: 50px;
-        min-height: auto;
+    .bocadillo-dialogo {
+        top: -40px;      /* Vuelve arriba */
+        left: 50%;
+        margin-left: 0;
+        animation: latidoDialogoMovil 1s infinite alternate;
     }
-
-    /* En móviles vuelve a ser relativo para que se posicione arriba del botón de forma natural */
-    .personaje-guia-contenedor {
-        position: relative;
-        right: auto;
+    
+    .bocadillo-dialogo::after {
         top: auto;
-        transform: none;
-        animation: flotarPersonajeMovil 3s infinite ease-in-out alternate;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%); /* Centra la colita horizontalmente */
+        border-width: 10px 10px 0;
+        border-color: #ffff00 transparent transparent transparent; /* Apunta hacia abajo */
     }
 
-    @keyframes flotarPersonajeMovil {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-10px); }
+    @keyframes latidoDialogoMovil {
+        0% { transform: translateX(-50%) scale(1); filter: brightness(1); }
+        100% { transform: translateX(-50%) scale(1.05); filter: brightness(1.2); }
     }
 }
