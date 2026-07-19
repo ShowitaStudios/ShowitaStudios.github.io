@@ -28,11 +28,6 @@ const misIconos = [
     'Media/metro_54.png',
     'Media/metro_54.png', 
     'Media/metro_52.png', 
-    'Media/metro_54.png', 
-    'Media/metro_52.png', 
-    'Media/metro_54.png', 
-    'Media/metro_52.png', 
-    'Media/metro_54.png', 
 ];
 
 function crearIconoFlotante(nombreArchivo) {

@@ -11,6 +11,7 @@ const galeriaPersonajes = [
     'Media/WiWi.png',
     'Media/Racer.png',
     'Media/Rally.png',
+    'Media/RallyShowi.png',
 ];
 
 const galeriaEscenarios = [
@@ -122,11 +123,6 @@ const misIconos = [
     'Media/metro_54.png',
     'Media/metro_54.png', 
     'Media/metro_52.png', 
-    'Media/metro_54.png', 
-    'Media/metro_52.png', 
-    'Media/metro_54.png', 
-    'Media/metro_52.png', 
-    'Media/metro_54.png', 
 ];
 
 function crearIconoFlotante(nombreArchivo) {
