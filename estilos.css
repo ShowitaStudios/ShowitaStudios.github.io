@@ -978,6 +978,5 @@ nav a:hover {
 }
 @media screen and (max-width: 768px) {
     .gif-esquina-asistente {
-        display: none;
     }
 }
