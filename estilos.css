@@ -980,3 +980,71 @@ nav a:hover {
     .gif-esquina-asistente {
     }
 }
+@media screen and (max-width: 900px) {
+    .contenedor-portal-completo {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        min-height: auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+    .contenedor-boton-portal {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .btn-glitch-arcade {
+        width: 100%;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .personaje-guia-contenedor {
+        position: relative;
+        right: auto;
+        left: auto;
+        top: auto;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        animation: flotarPersonajeMovil 3s infinite ease-in-out alternate;
+    }
+    .personaje-apuntando {
+        width: 35vw;
+        max-width: 130px;
+        height: auto;
+    }
+    .bocadillo-dialogo {
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 0;
+        font-size: 0.75rem; 
+        padding: 6px 10px;
+        white-space: nowrap;
+        
+        animation: latidoDialogoMovil 1s infinite alternate;
+    }
+    .bocadillo-dialogo::after {
+        top: auto;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 8px 8px 0;
+        border-style: solid;
+        border-color: #ffff00 transparent transparent transparent;
+    }
+    @keyframes flotarPersonajeMovil {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-6px); }
+    }
+
+    @keyframes latidoDialogoMovil {
+        0% { transform: translateX(-50%) scale(1); }
+        100% { transform: translateX(-50%) scale(1.03); }
+    }
+}
